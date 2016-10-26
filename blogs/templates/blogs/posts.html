@@ -8,7 +8,11 @@
 <body>
     {% for post in posts %}
         <li>
-            <p>Titulo: {{ post.titulo }}</p>
+            {% if user.id == post.usuario.id %}
+                <p>Titulo: <a href="{% url 'blogs:editPost' post.id %}">{{ post.titulo }}</a></p>
+            {% else %}
+                <p>Titulo: {{ post.titulo }}</p>
+            {% endif %}
             <p>Data: {{ post.dataAdd|date:'M d, Y H:i' }}</p>
             <p> {{post.texto|linebreaks }}</p>
         </li>
