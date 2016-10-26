@@ -1,6 +1,13 @@
 <p>
     <a href="{% url 'blogs:posts' %}">Postagens</a> -
-    <a href="{% url 'blogs:novoPost' %}">Nova Postagem</a>
+    <a href="{% url 'blogs:novoPost' %}">Nova Postagem</a> -
+    {% if user.is_authenticated %}
+        Hello, {{ user.first_name }}.
+        <a href="{% url 'users:logout' %}">Log out</a>
+    {% else %}
+        <a href="{% url 'users:register'%}">Register</a> -
+        <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
 </p>
 
 {% block content %}{% endblock content %}
