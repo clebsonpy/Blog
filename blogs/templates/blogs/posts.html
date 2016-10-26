@@ -1,0 +1,21 @@
+{% extends "blogs/base.html" %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Noticias</title>
+</head>
+<body>
+    {% for post in posts %}
+        <li>
+            <p>Titulo: {{ post.titulo }}</p>
+            <p>Data: {{ post.dataAdd|date:'M d, Y H:i' }}</p>
+            <p> {{post.texto|linebreaks }}</p>
+        </li>
+    {% empty %}
+        <li>
+            Sem postagens.
+        </li>
+    {% endfor %}
+</body>
+{% endblock content%}
