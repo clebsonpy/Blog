@@ -1,25 +1,39 @@
 {% extends "blogs/base.html" %}
-{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Noticias</title>
-</head>
-<body>
+{% block header %}
+    <h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
+{% endblock header %}
+
+{% block content %}
     {% for post in posts %}
-        <li>
-            {% if user.id == post.usuario.id %}
-                <p>Titulo: <a href="{% url 'blogs:editPost' post.id %}">{{ post.titulo }}</a></p>
-            {% else %}
-                <p>Titulo: {{ post.titulo }}</p>
-            {% endif %}
-            <p>Data: {{ post.dataAdd|date:'M d, Y H:i' }}</p>
-            <p> {{post.texto|linebreaks }}</p>
-        </li>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {% if user.id == post.usuario.id %}
+                    <h3>
+                        {{ post.titulo }}
+                        <small>
+                            <a href="{% url 'blogs:editPost' post.id %}">Editar Postagem</a>
+                        </small>
+                    </h3>
+                {% else %}
+                    <h3>
+                        {{ post.titulo }}
+                    </h3>
+                {% endif %}
+                <h4>
+                    {{ post.dataAdd|date:'M d, Y H:i' }}
+                </h4>
+            </div>
+            <div>
+                <h5>
+                    {{ post.texto|linebreaks }}
+                </h5>
+            </div>
+
+        </div>
     {% empty %}
-        <li>
+        <h5>
             Sem postagens.
-        </li>
+        </h5>
     {% endfor %}
-</body>
 {% endblock content%}

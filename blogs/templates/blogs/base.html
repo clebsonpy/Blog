@@ -1,13 +1,56 @@
-<p>
-    <a href="{% url 'blogs:posts' %}">Postagens</a> -
-    {% if user.is_authenticated %}
-        Hello, {{ user.first_name }}.
-        <a href="{% url 'blogs:novoPost' %}">Nova Postagem</a> -
-        <a href="{% url 'users:logout' %}">Log out</a>
-    {% else %}
-        <a href="{% url 'users:register'%}">Register</a> -
-        <a href="{% url 'users:login' %}">Log in</a>
-    {% endif %}
-</p>
+{% load bootstrap3 %}
 
-{% block content %}{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Blog Clebson</title>
+
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+
+    </head>
+    <body>
+        <!--Static navbar -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    </button>
+                    <a class="navbar-brand" href="{% url 'blogs:posts' %}">Postagens</a>
+                </div>
+
+                <div id="navbar" class="navbar-collapse collapse">
+                    {% if user.is_authenticated %}
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'blogs:novoPost' %}">Nova Postagem</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a>Hello, {{ user.first_name }}</a></li>
+                            <li><a href="{% url 'users:logout' %}">Log out</a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{% url 'users:register'%}">Register</a></li>
+                            <li><a href="{% url 'users:login' %}">Log in</a></li>
+                        </ul>
+                    {% endif %}
+                </div><!--/.nav-collapse -->
+
+            </div>
+        </nav>
+        <div class="container">
+            <div class="page-header">
+                {% block header %}{% endblock header %}
+            </div>
+            <div>
+                {% block content %}{% endblock content %}
+            </div>
+        </div><!--/container -->
+
+    </body>
+</html>
