@@ -16,41 +16,57 @@
         <!--Static navbar -->
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed"
-                        data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                    </button>
-                    <a class="navbar-brand" href="{% url 'blogs:posts' %}">Postagens</a>
-                </div>
-
-                <div id="navbar" class="navbar-collapse collapse">
+		<div id="navbar" class="navbar-collapse collapse">
                     {% if user.is_authenticated %}
-                        <ul class="nav navbar-nav">
-                            <li><a href="{% url 'blogs:novoPost' %}">Nova Postagem</a></li>
-                        </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a>Hello, {{ user.first_name }}</a></li>
-                            <li><a href="{% url 'users:logout' %}">Log out</a></li>
+                            <li><a>Bem Vindo, {{ user.first_name }}</a></li>
+                            <li><a href="{% url 'users:logout' %}">Sair</a></li>
                         </ul>
                     {% else %}
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{% url 'users:register'%}">Register</a></li>
-                            <li><a href="{% url 'users:login' %}">Log in</a></li>
+                            <li><a href="{% url 'users:register'%}">Registrar</a></li>
+                            <li><a href="{% url 'users:login' %}">Entrar</a></li>
                         </ul>
                     {% endif %}
+			
                 </div><!--/.nav-collapse -->
-
+		
             </div>
         </nav>
-        <div class="container">
-            <div class="page-header">
-                {% block header %}{% endblock header %}
-            </div>
-            <div>
-                {% block content %}{% endblock content %}
-            </div>
-        </div><!--/container -->
-
+	
+	<div class="container">
+	    <header class="row">
+		<div class="panel panel-default">
+		    <div class="panel-heading">
+	    		<h1>Clebson Carvalho</h1>
+			<a href="{% url 'blogs:posts' %}">Home</a>
+			<a href="{% url 'blogs:posts' %}"> - XXXXXX</a>
+			<a href="{% url 'blogs:posts' %}"> - YYYYYY</a>
+			<a href="{% url 'blogs:posts' %}"> - Contato</a>
+			<a href="{% url 'blogs:posts' %}"> - Parceiros</a>
+			<a href="{% url 'blogs:posts' %}"> - Sobre</a>
+		    	<button type="button" class="navbar-toggle collapsed"
+		        	data-toggle="collapse" data-target="#navbar"
+		        	aria-expanded="false" aria-controls="navbar">
+		    	</button>
+		    </div>
+		</div>
+	    </header>
+	    <div class="row">
+		<div role="main" class="col-md-6 col-md-push-3">
+		    {% block header %}{% endblock header %}
+		    {% block content %}{% endblock content %}
+		</div>
+		<aside role="complementary" class="col-md-3 col-md-push-3">
+		    {% block fluid %}{% endblock fluid %}
+		</aside>
+		<nav class="col-md-3 col-md-pull-9">
+		    {% block cleb %}{% endblock cleb %}
+		</nav>
+	    </div>
+	    <footer class="row">
+		{% block footer %}{% endblock footer %}
+	    </footer>
+	</div>
     </body>
 </html>

@@ -1,9 +1,28 @@
 {% extends "blogs/base.html" %}
 
+{% block fluid %}
+	<div class="panel panel-default">
+            <div class="panel-heading">
+    		<h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
+	    </div>
+	</div>
+{% endblock fluid %}
+
 {% block header %}
-    <h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
+	<div class="panel panel-default">
+            <div class="panel-heading">
+    		<h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
+	    </div>
+	</div>
 {% endblock header %}
 
+{% block cleb %}
+	<div class="panel panel-default">
+            <div class="panel-heading">
+    		<h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
+	    </div>
+	</div>
+{% endblock cleb %}
 {% block content %}
     {% for post in posts %}
         <div class="panel panel-default">
