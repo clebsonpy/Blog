@@ -6,6 +6,7 @@ class BlogPost(models.Model):
     #Compos da tabela BlogPost
     titulo = models.CharField(max_length=200)
     texto = models.TextField()
+    textResumo = models.TextField(max_length=400, null=True)
     dataAdd = models.DateTimeField(auto_now_add=True)
     usuario = models.ForeignKey(User)
 

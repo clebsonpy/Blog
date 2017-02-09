@@ -42,3 +42,12 @@ def editPost(request, post_id):
 
     context = {'post': post, 'form': form}
     return render(request, 'blogs/editPost.html', context)
+
+def detailPost(request, post_id):
+	post = BlogPost.objects.get(id = post_id)
+	context = {'post':post}
+	return render(request, 'blogs/detailPost.html', context)
+
+
+
+
