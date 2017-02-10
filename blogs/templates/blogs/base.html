@@ -34,39 +34,52 @@
             </div>
         </nav>
 	
-	<div class="container">
-	    <header class="row">
-		<div class="panel panel-default">
-		    <div class="panel-heading">
-	    		<h1>Clebson Carvalho</h1>
-			<a href="{% url 'blogs:posts' %}">Home</a>
-			<a href="{% url 'blogs:posts' %}"> - XXXXXX</a>
-			<a href="{% url 'blogs:posts' %}"> - YYYYYY</a>
-			<a href="{% url 'blogs:posts' %}"> - Contato</a>
-			<a href="{% url 'blogs:posts' %}"> - Parceiros</a>
-			<a href="{% url 'blogs:posts' %}"> - Sobre</a>
-		    	<button type="button" class="navbar-toggle collapsed"
-		        	data-toggle="collapse" data-target="#navbar"
-		        	aria-expanded="false" aria-controls="navbar">
-		    	</button>
-		    </div>
+		<div class="container">
+			<header class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1>Clebson Carvalho</h1>
+				<a href="{% url 'blogs:posts' %}">Home</a>
+				<a href="{% url 'blogs:posts' %}"> - XXXXXX</a>
+				<a href="{% url 'blogs:posts' %}"> - YYYYYY</a>
+				<a href="{% url 'blogs:posts' %}"> - Contato</a>
+				<a href="{% url 'blogs:posts' %}"> - Sobre</a>
+					<button type="button" class="navbar-toggle collapsed"
+				    	data-toggle="collapse" data-target="#navbar"
+				    	aria-expanded="false" aria-controls="navbar">
+					</button>
+				</div>
+			</div>
+			</header>
+			<div class="row">
+				<div role="main" class="col-md-6 col-md-push-3">
+					{% block header %}
+					{% endblock header %}
+					{% block content %}
+					{% endblock content %}
+				</div>
+				<aside role="complementary" class="col-md-3 col-md-push-3">
+					<div class="panel panel-default">
+			    		<div class="panel-heading">
+							<h2>Fluid</h2>
+						</div>
+					</div>
+				</aside>
+				<nav class="col-md-3 col-md-pull-9">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2>Parceiros</h2>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<footer class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2>Parceiros</h2>
+					</div>
+				</div>
+			</footer>
 		</div>
-	    </header>
-	    <div class="row">
-		<div role="main" class="col-md-6 col-md-push-3">
-		    {% block header %}{% endblock header %}
-		    {% block content %}{% endblock content %}
-		</div>
-		<aside role="complementary" class="col-md-3 col-md-push-3">
-		    {% block fluid %}{% endblock fluid %}
-		</aside>
-		<nav class="col-md-3 col-md-pull-9">
-		    {% block cleb %}{% endblock cleb %}
-		</nav>
-	    </div>
-	    <footer class="row">
-		{% block footer %}{% endblock footer %}
-	    </footer>
-	</div>
     </body>
 </html>

@@ -1,45 +1,29 @@
 {% extends "blogs/base.html" %}
 
-{% block fluid %}
-	<div class="panel panel-default">
-            <div class="panel-heading">
-    		<h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
-	    </div>
-	</div>
-{% endblock fluid %}
-
 {% block header %}
 	<div class="panel panel-default">
             <div class="panel-heading">
-    		<h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
+    		<h2>Postagens</h2>
 	    </div>
 	</div>
 {% endblock header %}
 
-{% block cleb %}
-	<div class="panel panel-default">
-            <div class="panel-heading">
-    		<h2><a href="{% url 'blogs:posts'%}">Postagens</a></h2>
-	    </div>
-	</div>
-{% endblock cleb %}
 {% block content %}
     {% for post in posts %}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3>
-                    <a href="{% url 'blogs:editPost' post.id%}">{{ post.titulo }}</a>
+                    <a href="{% url 'blogs:detailPost' post.id%}">{{ post.titulo }}</a>
                 </h3>
                 <h4>
                     {{ post.dataAdd|date:'M d, Y H:i' }}
                 </h4>
             </div>
-            <div>
-                <h5>
+            <div align="justify">
+                <p>
                     {{ post.textResumo|linebreaks }}
-                </h5>
+                </p>
             </div>
-
         </div>
     {% empty %}
         <h5>

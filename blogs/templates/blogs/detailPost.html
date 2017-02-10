@@ -1,0 +1,23 @@
+{% extends "blogs/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+	<div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>
+                {{ post.titulo }}<a href="{% url 'blogs:editPost' post.id%}"><h5>Editar</h5></a>
+            </h3>
+            <h4>
+                {{ post.dataAdd|date:'M d, Y H:i' }}
+            </h4>
+        </div>
+        <div align="justify">
+            <p>
+                {{ post.texto|linebreaks }}
+            </p>
+        </div>
+    </div>
+{% endblock content %}
